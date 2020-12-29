@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *');
 use Slim\Factory\AppFactory;
 use Doctrine\ORM\EntityManager;
 

@@ -109,6 +109,17 @@ class Utilisateur
         return $this->id_Utilisateur;
     }
 
+          /**
+     * Set idUser.
+     *
+     * @return int
+     */
+    public function setIdUtilisateur($idUser)
+    {
+        $this->id_Utilisateur = $idUser;
+    }
+
+
     /**
      * Set civilite.
      *

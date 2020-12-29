@@ -9,8 +9,6 @@ Utilisateur:
         unsigned: false
       id: true
       column: id
-      generator:
-        strategy: AUTO
   fields:
     civilite:
       type: string

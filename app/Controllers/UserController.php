@@ -62,6 +62,7 @@ class UserController
         $json = $request->getParsedBody()['user'];
         $user = json_decode($json, true);
         $utilisateurRepository = $this->entityManager->getRepository('Utilisateur');
+        $idUser = -1;
 
         if($this->checkValues($user) == false) {
             $response->getBody()->write(json_encode([
@@ -78,6 +79,13 @@ class UserController
             return $response->withStatus(401);
         }
 
+        if($usersLastId = $utilisateurRepository->findOneBy([], ['idCommande' => 'desc'])){
+            $idUser = $usersLastId->getIdUtilisateur()+1;
+        }
+        else {
+            $idUser = 0;
+        }
+
         $civilite = $user['civilite'] ?? "";
         $nom = $user['nom'] ?? "";
         $prenom = $user['prenom'] ?? "";
@@ -92,6 +100,7 @@ class UserController
 
         $utilisateur = new Utilisateur();
 
+        $utilisateur->setIdUtilisateur($idUser);
         $utilisateur->setCivilite($civilite);
         $utilisateur->setNom($nom);
         $utilisateur->setPrenom($prenom);

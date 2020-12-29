@@ -79,7 +79,7 @@ class UserController
             return $response->withStatus(401);
         }
 
-        if($usersLastId = $utilisateurRepository->findOneBy([], ['idCommande' => 'desc'])){
+        if($usersLastId = $utilisateurRepository->findOneBy([], ['id_Utilisateur' => 'desc'])){
             $idUser = $usersLastId->getIdUtilisateur()+1;
         }
         else {
